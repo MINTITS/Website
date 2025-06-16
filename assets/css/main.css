@@ -1,10 +1,18 @@
-/**
-* Template Name: Dewi
-* Template URL: https://bootstrapmade.com/dewi-free-multi-purpose-html-template/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+/*--------------------------------------------------------------
+# MINT ITS - Enterprise Technology Solutions
+# Copyright (c) 2024 MINT ITS
+# All Rights Reserved
+--------------------------------------------------------------*/
+
+:root {
+  --primary-color: #00BFA6;
+  --primary-color-hover: #00a890;
+  --secondary-color: #485664;
+  --accent-color: #00BFA6;
+  --contrast-color: #ffffff;
+  --heading-color: #364146;
+  --text-color: #627680;
+}
 
 /*--------------------------------------------------------------
 # Font & Color Variables
@@ -21,10 +29,7 @@
 :root { 
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #004D5B; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #004D5B; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #00C9A7; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */

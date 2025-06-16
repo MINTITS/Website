@@ -1,12 +1,10 @@
-/**
-* Template Name: Dewi
-* Template URL: https://bootstrapmade.com/dewi-free-multi-purpose-html-template/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+/*--------------------------------------------------------------
+# MINT ITS - Enterprise Technology Solutions
+# Copyright (c) 2024 MINT ITS
+# All Rights Reserved
+--------------------------------------------------------------*/
 
-(function() {
+(() => {
   "use strict";
 
   /**

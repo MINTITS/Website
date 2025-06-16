@@ -1,39 +1,87 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+/*
+ * MINT ITS Newsletter Form Handler
+ * Copyright (c) 2024 MINT ITS
+ */
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+require_once 'config.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['email'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject ="New Subscription: " . $_POST['email'];
+header('Content-Type: application/json');
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+try {
+    // Validate input
+    if (empty($_POST['email'])) {
+        throw new Exception(REQUIRED_FIELDS_MESSAGE);
+    }
 
-  $contact->add_message( $_POST['email'], 'Email');
+    if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        throw new Exception(INVALID_EMAIL_MESSAGE);
+    }
 
-  echo $contact->send();
+    $mail = new PHPMailer(true);
+
+    if (SMTP_ENABLED) {
+        // SMTP Configuration
+        $mail->isSMTP();
+        $mail->Host = SMTP_HOST;
+        $mail->SMTPAuth = true;
+        $mail->Username = SMTP_USERNAME;
+        $mail->Password = SMTP_PASSWORD;
+        $mail->SMTPSecure = SMTP_SECURE;
+        $mail->Port = SMTP_PORT;
+    }
+
+    // Email Content
+    $mail->setFrom(SITE_EMAIL, SITE_NAME);
+    $mail->addAddress(RECEIVING_EMAIL);
+    $mail->addReplyTo(SITE_EMAIL, SITE_NAME);
+
+    $mail->isHTML(true);
+    $mail->Subject = 'New Newsletter Subscription';
+    
+    // Create HTML message
+    $message = "<h2>New Newsletter Subscription</h2>";
+    $message .= "<p><strong>Email:</strong> " . htmlspecialchars($_POST['email']) . "</p>";
+    $message .= "<p>A new user has subscribed to the newsletter.</p>";
+    
+    $mail->Body = $message;
+    $mail->AltBody = strip_tags(str_replace('<br>', "\n", $message));
+
+    // Send confirmation email to subscriber
+    $confirmMail = new PHPMailer(true);
+    $confirmMail->isSMTP();
+    $confirmMail->Host = SMTP_HOST;
+    $confirmMail->SMTPAuth = true;
+    $confirmMail->Username = SMTP_USERNAME;
+    $confirmMail->Password = SMTP_PASSWORD;
+    $confirmMail->SMTPSecure = SMTP_SECURE;
+    $confirmMail->Port = SMTP_PORT;
+    
+    $confirmMail->setFrom(SITE_EMAIL, SITE_NAME);
+    $confirmMail->addAddress($_POST['email']);
+    $confirmMail->isHTML(true);
+    $confirmMail->Subject = 'Welcome to MINT ITS Newsletter';
+    
+    $confirmMessage = "<h2>Welcome to MINT ITS Newsletter!</h2>";
+    $confirmMessage .= "<p>Thank you for subscribing to our newsletter. We're excited to keep you updated with the latest technology insights and business solutions.</p>";
+    $confirmMessage .= "<p>Best regards,<br>The MINT ITS Team</p>";
+    
+    $confirmMail->Body = $confirmMessage;
+    $confirmMail->AltBody = strip_tags(str_replace('<br>', "\n", $confirmMessage));
+
+    // Send both emails
+    $mail->send();
+    $confirmMail->send();
+    
+    echo json_encode(['success' => true, 'message' => SUCCESS_MESSAGE]);
+
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+}
 ?>
