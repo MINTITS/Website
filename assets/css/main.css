@@ -5,13 +5,13 @@
 --------------------------------------------------------------*/
 
 :root {
-  --primary-color: #00BFA6;
-  --primary-color-hover: #00a890;
-  --secondary-color: #485664;
-  --accent-color: #00BFA6;
+  --primary-color: #0EA5E9;
+  --primary-color-hover: #0284C7;
+  --secondary-color: #6366F1;
+  --accent-color: #0EA5E9;
   --contrast-color: #ffffff;
-  --heading-color: #364146;
-  --text-color: #627680;
+  --heading-color: #F1F5F9;
+  --text-color: #E2E8F0;
 }
 
 /*--------------------------------------------------------------
@@ -20,16 +20,16 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Inter",  sans-serif;
+  --default-font: "Poppins", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --heading-font: "Montserrat", sans-serif;
+  --nav-font: "Montserrat", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #004D5B; /* Default color used for the majority of the text content across the entire website */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --background-color: #0F172A; /* Rich navy background */
+  --default-color: #E2E8F0; /* Refined light text color */
+  --surface-color: #1E293B; /* Elegant surface color for cards and boxes */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -229,21 +229,22 @@ h6 {
 .header {
   --default-color: #ffffff;
   --heading-color: #ffffff;
-  color: var(--default-color); /* Text color set to white */
-  background-color: transparent; /* Initial state: Transparent background on landing page */
+  color: var(--default-color);
+  background-color: rgba(15, 23, 42, 0.9); /* Semi-transparent dark background */
+  backdrop-filter: blur(10px);
   padding: 1px 0;
-  height: 120px; /* FIXED height of the nav bar */
+  height: 120px;
   display: flex;
   align-items: center;
-  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Smooth transition for background and shadow */
-  z-index: 997;
-  overflow: visible; /* Ensures the logo is not cropped if it extends beyond height */
-
-  /* Essential positioning for a fixed header (always visible at the top) */
+  transition: all 0.3s ease-in-out;
+  z-index: 9999; /* Increased z-index to ensure it's above all content */
+  overflow: visible;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .header .logo {
@@ -253,7 +254,7 @@ h6 {
 
 .header .logo img {
   max-height: 250px; /* Your desired FIXED logo size */
-  margin-right: 8px; /* Original margin from your provided CSS */
+  margin-right: 8 px; /* Original margin from your provided CSS */
   object-fit: contain; /* Ensures the logo's aspect ratio is maintained */
 }
 
@@ -303,9 +304,9 @@ h6 {
 /* Global Header on Scroll - This defines how it looks when scrolled */
 /* This rule applies when the <body> has the 'scrolled' class */
 .scrolled .header {
-  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
-  background-color: #004D5B; /* Solid background color on scroll */
-  /* No opacity, visibility, transform needed here, as the header is always visible and transitions background */
+  background-color: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(14, 165, 233, 0.15);
 }
 
 /* Ensure the container inside the header still handles layout correctly if you want spaced items */
@@ -1103,31 +1104,161 @@ section,
 /*--------------------------------------------------------------
 # Stats Section
 --------------------------------------------------------------*/
+.stats {
+  position: relative;
+  background: linear-gradient(180deg, var(--background-color) 0%, var(--surface-color) 100%);
+  padding: 100px 0;
+}
+
+.stats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+}
+
 .stats .stats-item {
-  background-color: var(--surface-color);
-  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  background: linear-gradient(145deg, var(--surface-color), rgba(14, 165, 233, 0.05));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(14, 165, 233, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats .stats-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(14, 165, 233, 0.1);
+  border-color: rgba(14, 165, 233, 0.3);
+}
+
+.stats .stats-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(14, 165, 233, 0.03), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
+}
+
+.stats .stats-item:hover::before {
+  transform: translateX(100%);
 }
 
 .stats .stats-item i {
-  color: var(--accent-color);
-  font-size: 42px;
-  line-height: 0;
-  margin-right: 20px;
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 25px;
+  display: inline-block;
+  color: #ffffff;
+  background: linear-gradient(45deg, #00F5D4, #7F00FF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: brightness(1.3) contrast(1.2);
+  text-shadow: 0 0 20px rgba(0, 245, 212, 0.5);
+  animation: pulse 2s infinite;
+  transform-origin: center;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.stats .stats-item:hover i {
+  animation: bounce 0.6s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.stats .stats-item .stats-content {
+  position: relative;
+  z-index: 1;
 }
 
 .stats .stats-item span {
-  color: var(--heading-color);
-  font-size: 36px;
+  font-size: 52px;
   display: block;
-  font-weight: 600;
+  font-weight: 800;
+  font-family: var(--heading-font);
+  margin-bottom: 10px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00F5D4, #7F00FF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: brightness(1.2) contrast(1.2);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -1px;
+  transition: all 0.3s ease;
+}
+
+.stats .stats-item:hover span {
+  transform: scale(1.1);
+  letter-spacing: 0;
 }
 
 .stats .stats-item p {
   padding: 0;
   margin: 0;
   font-family: var(--heading-font);
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #E2E8F0;
+  text-shadow: 0 0 10px rgba(0, 245, 212, 0.3);
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, #E2E8F0, #94A3B8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stats .stats-item p::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #00F5D4, #7F00FF);
+  box-shadow: 0 0 10px rgba(0, 245, 212, 0.5);
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.stats .stats-item:hover p::after {
+  width: 80px;
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(0, 245, 212, 0.7);
 }
 
 /*--------------------------------------------------------------
@@ -1894,7 +2025,8 @@ section,
 # Starter Section Section
 --------------------------------------------------------------*/
 .starter-section {
-  /* Add your styles here */
+  padding: 80px 0;
+  background-color: var(--background-color);
 }
 
 /* Service Cards Styling */

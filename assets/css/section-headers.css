@@ -1,0 +1,116 @@
+/*--------------------------------------------------------------
+# Modern Section Headers
+--------------------------------------------------------------*/
+.section-header {
+  text-align: left;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.section-header h2 {
+  background: linear-gradient(135deg, #00F5D4 0%, #7F00FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  width: 50px;
+  height: 2px;
+  background: #7F00FF;
+}
+
+.section-header p {
+  color: #E2E8F0;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Dark Background Sections */
+.dark-background .section-header h2,
+.footer .section-header h2,
+.hero .section-header h2 {
+  background: linear-gradient(135deg, #00F5D4 0%, #7F00FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark-background .section-header p,
+.footer .section-header p,
+.hero .section-header p {
+  color: #E2E8F0;
+}
+
+/* Light Background Sections */
+.light-background .section-header h2 {
+  background: linear-gradient(135deg, #00F5D4 0%, #7F00FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light-background .section-header p {
+  color: #1E293B;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+  }
+
+  .section-header h2::after {
+    right: -40px;
+    width: 30px;
+  }
+}
+
+/* Animation */
+.section-header.aos-animate h2 {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.section-header.aos-animate p {
+  animation: fadeInRight 0.8s ease-out;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
