@@ -90,14 +90,14 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 40px;
+  width: 50px;
   height: 2px;
   background: linear-gradient(90deg, #00F5D4, #7F00FF);
-  opacity: 0.5;
+  opacity: 0.8;
   transition: all 0.3s ease;
 }
 
 .stats .stats-item:hover .stats-content p::after {
-  width: 60px;
+  width: 70px;
   opacity: 1;
 }
