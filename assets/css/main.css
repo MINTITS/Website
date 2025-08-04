@@ -10,8 +10,8 @@
   --secondary-color: #6366F1;
   --accent-color: #0EA5E9;
   --contrast-color: #ffffff;
-  --heading-color: #F1F5F9;
-  --text-color: #E2E8F0;
+  --heading-color: #1E293B;
+  --text-color: #475569;
 }
 
 /*--------------------------------------------------------------
@@ -27,9 +27,9 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #0F172A; /* Rich navy background */
-  --default-color: #E2E8F0; /* Refined light text color */
-  --surface-color: #1E293B; /* Elegant surface color for cards and boxes */
+  --background-color: #FFFFFF; /* Clean white background */
+  --default-color: #334155; /* Dark text for readability */
+  --surface-color: #F8F9FA; /* Light grey surface for cards and boxes */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -45,16 +45,16 @@
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f1f4fa;
-  --surface-color: #ffffff;
+  --background-color: #ffffff;
+  --surface-color: #f8f9fa;
 }
 
 .dark-background {
-  --background-color: #000910;
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
-  --surface-color: #28323a;
-  --contrast-color: #ffffff;
+  --background-color: #f1f5f9;
+  --default-color: #334155;
+  --heading-color: #1e293b;
+  --surface-color: #e2e8f0;
+  --contrast-color: #1e293b;
 }
 
 /* Smooth scroll */
@@ -227,10 +227,10 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
+  --default-color: #334155;
+  --heading-color: #1e293b;
   color: var(--default-color);
-  background-color: rgba(15, 23, 42, 0.9); /* Semi-transparent dark background */
+  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
   backdrop-filter: blur(10px);
   padding: 1px 0;
   height: 120px;
@@ -244,7 +244,7 @@ h6 {
   left: 0;
   width: 100%;
   border-bottom: 1px solid rgba(14, 165, 233, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
 .header .logo {
@@ -252,11 +252,6 @@ h6 {
   /* Adjust margin for padding on the sides, if needed, when logo is centered or left-aligned */
 }
 
-.header .logo img {
-  max-height: 250px; /* Your desired FIXED logo size */
-  margin-right: 8 px; /* Original margin from your provided CSS */
-  object-fit: contain; /* Ensures the logo's aspect ratio is maintained */
-}
 
 .header .logo h1 {
   font-size: 30px;
@@ -304,8 +299,8 @@ h6 {
 /* Global Header on Scroll - This defines how it looks when scrolled */
 /* This rule applies when the <body> has the 'scrolled' class */
 .scrolled .header {
-  background-color: rgba(15, 23, 42, 0.95);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
   border-bottom: 1px solid rgba(14, 165, 233, 0.15);
 }
 
@@ -320,7 +315,7 @@ h6 {
 /* Global Header on Scroll
 ------------------------------*/
 .scrolled .header {
-  --background-color: #004D5B;
+  --background-color: #ffffff;
 }
 
 /*--------------------------------------------------------------

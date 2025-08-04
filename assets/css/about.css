@@ -2,7 +2,7 @@
 # About Section
 --------------------------------------------------------------*/
 .about {
-  background: #0B1120;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
   padding: 100px 0;
   position: relative;
   overflow: hidden;
@@ -34,7 +34,7 @@
 }
 
 .about-text {
-  color: #E2E8F0;
+  color: #475569;
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 2rem;
@@ -80,13 +80,14 @@
 }
 
 .feature-item {
-  background: rgba(13, 25, 48, 0.5);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(0, 245, 212, 0.1);
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .feature-item:hover {
@@ -105,14 +106,14 @@
 }
 
 .feature-title {
-  color: #FFFFFF;
+  color: #1E293B;
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
 .feature-description {
-  color: #94A3B8;
+  color: #64748B;
   font-size: 1rem;
   line-height: 1.6;
   margin: 0;

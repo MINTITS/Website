@@ -3,7 +3,7 @@
 --------------------------------------------------------------*/
 .why-us {
   position: relative;
-  background: linear-gradient(145deg, #0F172A, #1E293B);
+  background: linear-gradient(145deg, #F8F9FA, #E2E8F0);
   padding: 120px 0 80px 0; /* Increased top padding to account for header height */
   margin-top: -20px; /* Negative margin to connect with previous section */
 }
@@ -19,7 +19,7 @@
 }
 
 .why-us .section-title h2 {
-  color: #F8FAFC;
+  color: #1E293B;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -30,17 +30,17 @@
 }
 
 .why-us .section-title p {
-  color: #E2E8F0;
+  color: #475569;
   font-size: 1.25rem;
   opacity: 0.9;
 }
 
 .why-us-item {
-  background: rgba(30, 41, 59, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(14, 165, 233, 0.1);
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   padding: 35px;
   transition: all 0.4s ease;
   position: relative;
@@ -71,14 +71,14 @@
 }
 
 .why-us-item h4 {
-  color: #F8FAFC;
+  color: #1E293B;
   font-size: 1.5rem;
   font-weight: 700;
   margin: 1.5rem 0 1rem;
 }
 
 .why-us-item p {
-  color: #E2E8F0;
+  color: #475569;
   font-size: 1rem;
   line-height: 1.6;
   opacity: 0.9;
@@ -110,16 +110,16 @@
 }
 
 .value-statement-custom {
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 20px 30px;
   margin-top: 2rem;
-  color: #F8FAFC;
+  color: #475569;
   font-size: 1.1rem;
   line-height: 1.6;
   border: 1px solid rgba(14, 165, 233, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .value-statement-custom strong {

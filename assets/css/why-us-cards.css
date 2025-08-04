@@ -3,7 +3,7 @@
 --------------------------------------------------------------*/
 .why-us {
   position: relative;
-  background: #0B1120;
+  background: #FFFFFF;
   padding: 120px 0 80px 0;
 }
 
@@ -19,21 +19,21 @@
 }
 
 .why-us .section-title p {
-  color: #E2E8F0;
+  color: #475569;
   font-size: 1.75rem;
   margin-top: 1rem;
 }
 
 .why-us-item {
-  background: rgba(13, 17, 32, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 24px;
   padding: 40px;
   height: 100%;
   position: relative;
   transition: all 0.3s ease;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .why-us-item:hover {
@@ -45,7 +45,7 @@
 .why-us-item .icon {
   width: 64px;
   height: 64px;
-  background: rgba(13, 17, 32, 0.8);
+  background: rgba(248, 249, 250, 0.9);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -64,27 +64,27 @@
 }
 
 .why-us-item h4 {
-  color: #ffffff;
+  color: #1E293B;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
 .why-us-item p {
-  color: #94A3B8;
+  color: #64748B;
   font-size: 16px;
   line-height: 1.7;
   margin: 0;
 }
 
 .value-statement-custom {
-  background: rgba(13, 17, 32, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(0, 245, 212, 0.1);
   border-radius: 16px;
   padding: 25px 30px;
   margin-top: 3rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .value-statement-custom strong {
@@ -93,7 +93,7 @@
 }
 
 .value-statement-custom {
-  color: #E2E8F0;
+  color: #475569;
   font-size: 1.1rem;
   line-height: 1.6;
 }
