@@ -571,7 +571,7 @@
                 <p class="form-subtitle">Tell us about your business goals and we'll show you how AI can help you achieve them.</p>
               </div>
               
-              <form action="forms/contact.php" method="post" class="php-email-form enhanced-form" data-aos="fade-up" data-aos-delay="600">
+              <form id="brevo-contact-form" class="php-email-form enhanced-form" data-aos="fade-up" data-aos-delay="600">
                 <div class="row gy-4">
                 <div class="col-md-6">
                   <input type="text" name="name" class="form-control" placeholder="Your Name" required>
@@ -711,6 +711,8 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <script src="assets/js/main.js"></script>
+  
+
 
   <!-- Chat Bot Widget -->
   <div class="chat-widget" id="chatWidget">
@@ -740,6 +742,90 @@
       </div>
     </div>
   </div>
+
+  <!-- Brevo Contact Form Script -->
+  <script>
+    document.getElementById('brevo-contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Show loading
+      document.querySelector('.loading').style.display = 'block';
+      document.querySelector('.error-message').style.display = 'none';
+      document.querySelector('.sent-message').style.display = 'none';
+      
+      // Get form data
+      const formData = new FormData(this);
+      const data = {
+        sender: {
+          name: formData.get('name'),
+          email: formData.get('email')
+        },
+        to: [{
+          email: 'info@mintits.com',
+          name: 'MintITS Team'
+        }],
+        subject: `New Business Inquiry: ${formData.get('subject')}`,
+        htmlContent: `
+          <h2>🚀 New Business Inquiry - MINT ITS</h2>
+          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            
+            <h3 style="color: #0ea5e9; margin-bottom: 15px;">👤 Contact Information</h3>
+            <p><strong>Name:</strong> ${formData.get('name')}</p>
+            <p><strong>Email:</strong> ${formData.get('email')}</p>
+            ${formData.get('phone') ? `<p><strong>Phone:</strong> ${formData.get('phone')}</p>` : ''}
+            
+            <h3 style="color: #0ea5e9; margin: 20px 0 15px 0;">🏢 Company Information</h3>
+            <p><strong>Company:</strong> ${formData.get('company')}</p>
+            ${formData.get('address') ? `<p><strong>Address:</strong> ${formData.get('address')}</p>` : ''}
+            ${formData.get('company_size') ? `<p><strong>Company Size:</strong> ${formData.get('company_size')}</p>` : ''}
+            
+            <h3 style="color: #0ea5e9; margin: 20px 0 15px 0;">🎯 Project Information</h3>
+            <p><strong>Service Interest:</strong> ${formData.get('service_interest')}</p>
+            ${formData.get('timeline') ? `<p><strong>Timeline:</strong> ${formData.get('timeline')}</p>` : ''}
+            <p><strong>Subject:</strong> ${formData.get('subject')}</p>
+            
+            <h3 style="color: #0ea5e9; margin: 20px 0 15px 0;">💬 Message</h3>
+            <div style="background: white; padding: 15px; border-radius: 5px; border-left: 4px solid #0ea5e9;">
+              ${formData.get('message').replace(/\n/g, '<br>')}
+            </div>
+            
+          </div>
+          <p style="color: #64748b; font-size: 12px; margin-top: 20px;">
+            📅 Received: ${new Date().toLocaleString()}
+          </p>
+        `,
+        replyTo: {
+          email: formData.get('email'),
+          name: formData.get('name')
+        }
+      };
+
+      try {
+        // Send via Cloudflare Workers (secure way)
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        document.querySelector('.loading').style.display = 'none';
+        
+        if (response.ok) {
+          document.querySelector('.sent-message').style.display = 'block';
+          document.querySelector('.sent-message').innerHTML = 'Thank you for your business inquiry! We will review your request and contact you within 24 hours.';
+          this.reset();
+        } else {
+          throw new Error('Failed to send email');
+        }
+      } catch (error) {
+        document.querySelector('.loading').style.display = 'none';
+        document.querySelector('.error-message').style.display = 'block';
+        document.querySelector('.error-message').innerHTML = 'Sorry, there was an error sending your message. Please try again.';
+      }
+    });
+  </script>
 
 </body>
 
