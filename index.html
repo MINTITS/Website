@@ -571,7 +571,7 @@
                 <p class="form-subtitle">Tell us about your business goals and we'll show you how AI can help you achieve them.</p>
               </div>
               
-              <form id="brevo-contact-form" class="php-email-form enhanced-form" data-aos="fade-up" data-aos-delay="600">
+              <form id="brevo-contact-form" class="php-email-form enhanced-form" data-aos="fade-up" data-aos-delay="600" onsubmit="return false;">
                 <div class="row gy-4">
                 <div class="col-md-6">
                   <input type="text" name="name" class="form-control" placeholder="Your Name" required>
@@ -801,14 +801,21 @@
       };
 
       try {
-        // Send via Cloudflare Workers (secure way)
-        const response = await fetch('/api/send-email', {
+        console.log('Sending form data:', data);
+        
+        // TEMPORARY: Send directly to Brevo (replace YOUR_API_KEY with actual key)
+        const response = await fetch('https://api.brevo.com/v3/smtp/email', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'api-key': 'YOUR_BREVO_API_KEY' // Replace with your actual API key
           },
           body: JSON.stringify(data)
         });
+
+        console.log('Response status:', response.status);
+        const responseText = await response.text();
+        console.log('Response body:', responseText);
 
         document.querySelector('.loading').style.display = 'none';
         
@@ -817,9 +824,11 @@
           document.querySelector('.sent-message').innerHTML = 'Thank you for your business inquiry! We will review your request and contact you within 24 hours.';
           this.reset();
         } else {
-          throw new Error('Failed to send email');
+          console.error('Server error:', response.status, responseText);
+          throw new Error(`Server error: ${response.status}`);
         }
       } catch (error) {
+        console.error('Form submission error:', error);
         document.querySelector('.loading').style.display = 'none';
         document.querySelector('.error-message').style.display = 'block';
         document.querySelector('.error-message').innerHTML = 'Sorry, there was an error sending your message. Please try again.';
