@@ -19,7 +19,7 @@ export async function onRequestPost(context) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'api-key': env.BREVO_API_KEY // Secure environment variable
+        'api-key': env.BREVO_API_KEY // Your Cloudflare environment variable
       },
       body: JSON.stringify(data)
     });
@@ -36,7 +36,6 @@ export async function onRequestPost(context) {
       });
     } else {
       const errorData = await response.text();
-      console.error('Brevo API error:', errorData);
       
       return new Response(JSON.stringify({
         success: false,
@@ -48,8 +47,6 @@ export async function onRequestPost(context) {
     }
 
   } catch (error) {
-    console.error('Function error:', error);
-    
     return new Response(JSON.stringify({
       success: false,
       message: 'Sorry, there was an error sending your message. Please try again.'
