@@ -1803,89 +1803,316 @@ section,
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
+.contact {
+  background: linear-gradient(135deg, var(--background-color) 0%, var(--surface-color) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.contact-info-wrapper {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.1);
+  height: 100%;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact-title {
+  color: var(--heading-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #0EA5E9, #00F5D4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-description {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
 .contact .info-item {
-  background-color: var(--surface-color);
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  padding: 24px 0 30px 0;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(14, 165, 233, 0.1);
+  height: 100%;
+}
+
+.contact .info-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(14, 165, 233, 0.15);
 }
 
 .contact .info-item i {
-  font-size: 20px;
-  color: var(--accent-color);
-  width: 56px;
-  height: 56px;
   font-size: 24px;
+  color: var(--accent-color);
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 4px;
-  transition: all 0.3s ease-in-out;
   border-radius: 50%;
-  border: 2px dotted color-mix(in srgb, var(--accent-color), transparent 40%);
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(0, 245, 212, 0.1));
+  border: 2px solid rgba(14, 165, 233, 0.2);
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.contact .info-item:hover i {
+  background: linear-gradient(135deg, var(--accent-color), #00F5D4);
+  color: white;
+  transform: scale(1.1);
 }
 
 .contact .info-item h3 {
-  font-size: 20px;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  font-size: 18px;
-  font-weight: 700;
+  color: var(--heading-color);
+  font-size: 1.1rem;
+  font-weight: 600;
   margin: 10px 0;
 }
 
 .contact .info-item p {
-  padding: 0;
+  color: var(--text-color);
+  font-size: 0.95rem;
   margin-bottom: 0;
-  font-size: 14px;
+  font-weight: 500;
 }
 
-.contact .php-email-form {
-  background-color: var(--surface-color);
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  height: 100%;
-  padding: 30px;
+.contact-features {
+  margin-top: 30px;
+  padding: 25px;
+  background: rgba(14, 165, 233, 0.05);
+  border-radius: 15px;
+  border-left: 4px solid var(--accent-color);
 }
 
-@media (max-width: 575px) {
-  .contact .php-email-form {
-    padding: 20px;
-  }
+.contact-features h4 {
+  color: var(--heading-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.feature-list li i {
+  color: #00F5D4;
+  margin-right: 12px;
+  font-size: 1.1rem;
+}
+
+.trust-indicators {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 15px;
+}
+
+.trust-item {
+  text-align: center;
+  flex: 1;
+}
+
+.trust-item i {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.trust-item span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.contact-form-wrapper {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(14, 165, 233, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-color), #00F5D4);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-title {
+  color: var(--heading-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.form-subtitle {
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.contact .php-email-form.enhanced-form {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
 }
 
 .contact .php-email-form input[type=text],
 .contact .php-email-form input[type=email],
+.contact .php-email-form input[type=tel],
+.contact .php-email-form select,
 .contact .php-email-form textarea {
-  font-size: 14px;
-  padding: 10px 15px;
-  box-shadow: none;
-  border-radius: 0;
+  font-size: 15px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 2px solid rgba(14, 165, 233, 0.1);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--default-color);
-  background-color: var(--surface-color);
-  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .contact .php-email-form input[type=text]:focus,
 .contact .php-email-form input[type=email]:focus,
+.contact .php-email-form input[type=tel]:focus,
+.contact .php-email-form select:focus,
 .contact .php-email-form textarea:focus {
   border-color: var(--accent-color);
+  box-shadow: 0 5px 20px rgba(14, 165, 233, 0.2);
+  transform: translateY(-2px);
+  outline: none;
 }
 
 .contact .php-email-form input[type=text]::placeholder,
 .contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form input[type=tel]::placeholder,
 .contact .php-email-form textarea::placeholder {
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
+  color: rgba(117, 134, 152, 0.7);
+  font-weight: 400;
+}
+
+.contact .php-email-form select {
+  cursor: pointer;
+}
+
+.contact .php-email-form select option {
+  padding: 10px;
+}
+
+.contact .php-email-form textarea {
+  resize: vertical;
+  min-height: 120px;
 }
 
 .contact .php-email-form button[type=submit] {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  border: 0;
-  padding: 10px 30px;
-  transition: 0.4s;
+  background: linear-gradient(135deg, var(--accent-color), #00F5D4);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
   border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .contact .php-email-form button[type=submit]:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(14, 165, 233, 0.4);
+  background: linear-gradient(135deg, #0284C7, #00E6CC);
+}
+
+.contact .php-email-form .loading,
+.contact .php-email-form .error-message,
+.contact .php-email-form .sent-message {
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.contact .php-email-form .sent-message {
+  background: rgba(0, 245, 212, 0.1);
+  border: 1px solid rgba(0, 245, 212, 0.3);
+  color: #00A693;
+}
+
+.contact .php-email-form .error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #DC2626;
+}
+
+@media (max-width: 768px) {
+  .contact-info-wrapper,
+  .contact-form-wrapper {
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+  
+  .trust-indicators {
+    flex-direction: column;
+  }
+  
+  .trust-item {
+    margin-bottom: 15px;
+  }
 }
 
 /*--------------------------------------------------------------
